@@ -1,0 +1,17 @@
+<nav class="bg-white p-8 uppercase font-semibold">
+  <div class="container mx-auto flex justify-around">
+    
+    {% if user.is_authenticated %}
+      <a href="{% url 'add_todo' %}" class="text-gray-800 hover:text-blue-600 transition-colors duration-200">Add</a>
+      <a href="{% url 'todo_list' %}" class="text-gray-800 hover:text-blue-600 transition-colors duration-200">List</a>
+      <a href="{% url 'complete_todo_list' %}" class="text-gray-800 hover:text-blue-600 transition-colors duration-200">Complete</a>
+      <a href="{% url 'failed_todo_list' %}" class="text-gray-800 hover:text-blue-600 transition-colors duration-200">Failed</a>
+      <a href="{% url 'pending_todo_list' %}" class="text-gray-800 hover:text-blue-600 transition-colors duration-200">Pending</a>
+      <a href="{% url 'search_todos' %}" class="text-gray-800 hover:text-blue-600 transition-colors duration-200">Search</a>
+      <a href="{% url 'user_logout' %}" class="text-gray-800 hover:text-blue-600 transition-colors duration-200">Logout</a>
+    {% else %}
+      <a href="{% url 'user_login' %}" class="text-gray-800 hover:text-blue-600 transition-colors duration-200">Login</a>
+      <a href="{% url 'user_register' %}" class="text-gray-800 hover:text-blue-600 transition-colors duration-200">Register</a>
+    {% endif %}
+  </div>
+</nav>

@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+*.pot
+*.pyc
+.env
+*.env
+*.pyo
+*.pyd
+
+# Django
+db.sqlite3
+media/
+staticfiles/
+static_root/
+local_settings.py
+
+# Tailwind
+node_modules/
+package-lock.json
+public/
+build/
+dist/
+
+# Tailwind compiled CSS (optional if you rebuild)
+static/css/dist/
+
+# VSCode or other IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Docker
+*.pid
+*.tar
+*.gz
+*.bak
+*.swp
+*.sock
+docker-compose.override.yml
+
+# Git
+*.orig
+
+# Coverage
+htmlcov/
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+.pytest_cache/
+
+zenv
+zenv/
+venv
+venv/

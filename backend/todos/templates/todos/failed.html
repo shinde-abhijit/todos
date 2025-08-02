@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Failed Todo List{% endblock title %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg mt-10">
+
+  {% if failed %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for todo in failed %}
+        <a href="{% url 'todo_details' todo.pk %}" 
+           class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-xl hover:bg-white transition transform hover:scale-[1.03] cursor-pointer overflow-hidden flex flex-col justify-between h-full">
+          <div>
+            <h2 class="text-lg font-semibold text-gray-900 truncate mb-2">
+              {{ todo.title }}
+            </h2>
+            <p class="text-gray-500 text-sm line-clamp-2">
+              {{ todo.description|default:"No description provided." }}
+            </p>
+          </div>
+          <div class="mt-4 text-right text-blue-600 font-semibold opacity-0 hover:opacity-100 transition">
+            View details &rarr;
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-center py-16">
+      <p class="mb-6 text-gray-600 text-lg">No todos found.</p>
+      <a href="{% url 'add_todo' %}" 
+         class="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl shadow-lg transition uppercase tracking-wide text-sm">
+        Add New Todo
+      </a>
+    </div>
+  {% endif %}
+
+</div>
+{% endblock content %}

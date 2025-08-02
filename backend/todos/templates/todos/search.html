@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Search Todos{% endblock title %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md mt-10">
+  <form method="GET" action="{% url 'search_todos' %}" class="mb-6 flex gap-2">
+    <input 
+      type="text" 
+      name="q" 
+      value="{{ query }}" 
+      placeholder="Search todos..." 
+      required
+      class="flex-grow px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <button 
+      type="submit" 
+      class="px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold transition"
+    >
+      Search
+    </button>
+  </form>
+
+  {% if todo_search %}
+    <h2 class="text-xl font-semibold mb-4">Search Results for "{{ query }}"</h2>
+    <hr class="mb-4" />
+    <div class="space-y-4">
+      {% for todo in todo_search %}
+        <a href="{% url 'todo_details' todo.pk %}" class="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+          <h3 class="text-lg font-semibold text-gray-900">{{ todo.title }}</h3>
+          <p class="text-gray-600 text-sm line-clamp-2">
+            {{ todo.description|default:"No description provided." }}
+          </p>
+        </a>
+      {% empty %}
+        <p class="text-gray-500">No todos matched your search.</p>
+      {% endfor %}
+    </div>
+  {% elif query %}
+    <p class="text-gray-600">No todos matched your search for "{{ query }}".</p>
+  {% endif %}
+</div>
+{% endblock content %}
+s
