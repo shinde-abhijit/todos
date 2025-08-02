@@ -16,9 +16,9 @@ SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["todos-latest-u3mg.onrender.com"]
 
-# CSRF_TRUSTED_ORIGINS = ['']
+CSRF_TRUSTED_ORIGINS = ['https://todos-latest-u3mg.onrender.com']
 
 INSTALLED_APPS = [
     'base',
@@ -76,12 +76,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env("COMMON_DB_NAME"),
+        'USER': env("COMMON_DB_USERNAME"),
+        'PASSWORD': env("COMMON_DB_PASSWORD"),
+        'HOST': env("COMMON_DB_HOST"),
+        'PORT': env("COMMON_DB_PORT"),
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
